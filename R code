@@ -118,7 +118,7 @@ data.Ber.Aft.RC = function(n,beta0,beta1,beta2,beta3,beta4,beta5,beta6,beta7,bet
 
 
 
-# A3. R code for estimating the baseline survival function using the Breslow technique
+# A3. R code for computing the errors based on initial betas
 
 library(survival)
 
@@ -130,6 +130,8 @@ smrank <-function(beta,Time,X,n,w,Status){
   }
   sum(tp)/n
 }
+
+# A4. R code for estimating the baseline survival function using the Breslow technique
 
 smsurv <-function(Time,Status,X,beta,w,model){    
   death_point <- sort(unique(subset(Time, Status==1)))
