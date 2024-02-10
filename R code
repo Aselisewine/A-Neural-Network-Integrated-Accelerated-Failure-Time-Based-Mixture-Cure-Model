@@ -214,70 +214,67 @@ em.nn <-function(Time,Time1,Status,Status1,X,X1,Z,Z1,offsetvar,uncureprob,uncure
     update_cureb<-c(1,1)
     update_pred<-c(1,1)
     
-    mod1=neuralnetwork(X =Z[,-1] ,y=uncureprob1, 
-                       hidden=c(6,12),regression = FALSE,
-                       standardize = TRUE, loss.type = "log",
-                       activ.functions = "sigmoid",n.epochs = 500, learn.rates = 0.0001)
-    proba1=data.frame(probs1=predict(mod1,Z[,-1])$probabilities)
-    cproba1=data.frame(prob1=predict(mod1,Z1[,-1])$probabilities)
-       
+    dataa1=data.frame(uncureprob1,Z[,-1])
+    mod1=neuralnet((uncureprob1==1)~z1+z2,data = dataa1, 
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+    proba1=data.frame(probs1=neuralnet::compute(mod1,data)$net.result)
+    cproba1=data.frame(prob1=neuralnet::compute(mod1,testdata)$net.result)
+    
     update_cureb1<-c(1,1)
     update_pred1<-c(1,1)
-    for (z in 1:n){update_cureb1[z]<-as.vector(proba1[z,colnames(proba1)=='probs1.class_1'])}
-    for (k in 1:m){update_pred1[k]<-as.vector(cproba1[k,colnames(cproba1)=='prob1.class_1'])}
+    for (z in 1:n){update_cureb1[z]<-as.vector(proba1[z,colnames(proba1)=='probs1'])}
+    for (k in 1:m){update_pred1[k]<-as.vector(cproba1[k,colnames(cproba1)=='prob1'])}
+    
     uncureprob1<-as.numeric(as.character(uncureprob1))
     
-    mod2=neuralnetwork(X =Z[,-1] ,y=uncureprob2, 
-                       hidden=c(6,12),regression = FALSE,
-                       standardize = TRUE, loss.type = "log",
-                       activ.functions = "sigmoid",n.epochs = 500,learn.rates = 0.0001)
-    proba2=data.frame(probs2=predict(mod2,Z[,-1])$probabilities)
-    cproba2=data.frame(prob2=predict(mod2,Z1[,-1])$probabilities)
+    dataa2=data.frame(uncureprob2,Z[,-1])
+    mod2=neuralnet((uncureprob2==1)~z1+z2,data = dataa2, 
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+    proba2=data.frame(probs2=neuralnet::compute(mod2,data)$net.result)
+    cproba2=data.frame(prob2=neuralnet::compute(mod2,testdata)$net.result)
     
     update_cureb2<-c(1,1)
     update_pred2<-c(1,1)
-    for (z in 1:n){update_cureb2[z]<-as.vector(proba2[z,colnames(proba2)=='probs2.class_1'])}
-    for (k in 1:m){update_pred2[k]<-as.vector(cproba2[k,colnames(cproba2)=='prob2.class_1'])}
+    for (z in 1:n){update_cureb2[z]<-as.vector(proba2[z,colnames(proba2)=='probs2'])}
+    for (k in 1:m){update_pred2[k]<-as.vector(cproba2[k,colnames(cproba2)=='prob2'])}
     uncureprob2<-as.numeric(as.character(uncureprob2))
     
-    mod3=neuralnetwork(X =Z[,-1] ,y=uncureprob3, 
-                       hidden=c(6,12),regression = FALSE,
-                       standardize = TRUE, loss.type = "log",
-                       activ.functions = "sigmoid",n.epochs = 500, learn.rates = 0.0001)
-    proba3=data.frame(probs3=predict(mod3,Z[,-1])$probabilities)
-    cproba3=data.frame(prob3=predict(mod3,Z1[,-1])$probabilities)
+    dataa3=data.frame(uncureprob3,Z[,-1])
+    mod3=neuralnet((uncureprob3==1)~z1+z2,data = dataa3, 
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+    proba3=data.frame(probs3=neuralnet::compute(mod3,data)$net.result)
+    cproba3=data.frame(prob3=neuralnet::compute(mod3,testdata)$net.result)
     
     update_cureb3<-c(1,1)
     update_pred3<-c(1,1)
-    for (z in 1:n){update_cureb3[z]<-as.vector(proba3[z,colnames(proba3)=='probs3.class_1'])}
-    for (k in 1:m){update_pred3[k]<-as.vector(cproba3[k,colnames(cproba3)=='prob3.class_1'])}
+    for (z in 1:n){update_cureb3[z]<-as.vector(proba3[z,colnames(proba3)=='probs3'])}
+    for (k in 1:m){update_pred3[k]<-as.vector(cproba3[k,colnames(cproba3)=='prob3'])}
     uncureprob3<-as.numeric(as.character(uncureprob3))
     
-    mod4=neuralnetwork(X =Z[,-1] ,y=uncureprob4, 
-                       hidden=c(6,12),regression = FALSE,
-                       standardize = TRUE, loss.type = "log",
-                       activ.functions = "sigmoid",n.epochs = 500, learn.rates = 0.0001)
-    proba4=data.frame(probs4=predict(mod4,Z[,-1])$probabilities)
-    cproba4=data.frame(prob4=predict(mod4,Z1[,-1])$probabilities)
+    dataa4=data.frame(uncureprob4,Z[,-1])
+    mod4=neuralnet((uncureprob4==1)~z1+z2,data = dataa4, 
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+    proba4=data.frame(probs4=neuralnet::compute(mod4,data)$net.result)
+    cproba4=data.frame(prob4=neuralnet::compute(mod4,testdata)$net.result)
     
     update_cureb4<-c(1,1)
     update_pred4<-c(1,1)
-    for (z in 1:n){update_cureb4[z]<-as.vector(proba4[z,colnames(proba4)=='probs4.class_1'])}
-    for (k in 1:m){update_pred4[k]<-as.vector(cproba4[k,colnames(cproba4)=='prob4.class_1'])}
+    for (z in 1:n){update_cureb4[z]<-as.vector(proba4[z,colnames(proba4)=='probs4'])}
+    for (k in 1:m){update_pred4[k]<-as.vector(cproba4[k,colnames(cproba4)=='prob4'])}
     uncureprob4<-as.numeric(as.character(uncureprob4))
     
-    mod5=neuralnetwork(X =Z[,-1] ,y=uncureprob5, 
-                       hidden=c(6,12),regression = FALSE,
-                       standardize = TRUE, loss.type = "log",
-                       activ.functions = "sigmoid",n.epochs = 500, learn.rates = 0.0001)
-    proba5=data.frame(probs5=predict(mod5,Z[,-1])$probabilities)
-    cproba5=data.frame(prob5=predict(mod5,Z1[,-1])$probabilities)    
+    dataa5=data.frame(uncureprob5,Z[,-1])
+    mod5=neuralnet((uncureprob5==1)~z1+z2,data = dataa5, 
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+    proba5=data.frame(probs5=neuralnet::compute(mod5,data)$net.result)
+    cproba5=data.frame(prob5=neuralnet::compute(mod5,testdata)$net.result)
     
     update_cureb5<-c(1,1)
     update_pred5<-c(1,1)
-    for (z in 1:n){update_cureb5[z]<-as.vector(proba5[z,colnames(proba5)=='probs5.class_1'])}
-    for (k in 1:m){update_pred5[k]<-as.vector(cproba5[k,colnames(cproba5)=='prob5.class_1'])}
+    for (z in 1:n){update_cureb5[z]<-as.vector(proba5[z,colnames(proba5)=='probs5'])}
+    for (k in 1:m){update_pred5[k]<-as.vector(cproba5[k,colnames(cproba5)=='prob5'])}
     uncureprob5<-as.numeric(as.character(uncureprob5))
+    
     
     for (z in 1:n){update_cureb[z]<-(update_cureb1[z]+update_cureb2[z]+update_cureb3[z]+update_cureb4[z]+update_cureb5[z])/5}
     for (k in 1:m){update_pred[k]<-(update_pred1[k]+update_pred2[k]+update_pred3[k]+update_pred4[k]+update_pred5[k])/5}
