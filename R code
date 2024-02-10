@@ -216,7 +216,7 @@ em.nn <-function(Time,Time1,Status,Status1,X,X1,Z,Z1,offsetvar,uncureprob,uncure
     
     dataa1=data.frame(uncureprob1,Z[,-1])
     mod1=neuralnet((uncureprob1==1)~z1+z2,data = dataa1, 
-                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic',learningrate = 0.0001)
     proba1=data.frame(probs1=neuralnet::compute(mod1,data)$net.result)
     cproba1=data.frame(prob1=neuralnet::compute(mod1,testdata)$net.result)
     
@@ -229,7 +229,7 @@ em.nn <-function(Time,Time1,Status,Status1,X,X1,Z,Z1,offsetvar,uncureprob,uncure
     
     dataa2=data.frame(uncureprob2,Z[,-1])
     mod2=neuralnet((uncureprob2==1)~z1+z2,data = dataa2, 
-                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic',learningrate = 0.0001)
     proba2=data.frame(probs2=neuralnet::compute(mod2,data)$net.result)
     cproba2=data.frame(prob2=neuralnet::compute(mod2,testdata)$net.result)
     
@@ -241,7 +241,7 @@ em.nn <-function(Time,Time1,Status,Status1,X,X1,Z,Z1,offsetvar,uncureprob,uncure
     
     dataa3=data.frame(uncureprob3,Z[,-1])
     mod3=neuralnet((uncureprob3==1)~z1+z2,data = dataa3, 
-                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic',learningrate = 0.0001)
     proba3=data.frame(probs3=neuralnet::compute(mod3,data)$net.result)
     cproba3=data.frame(prob3=neuralnet::compute(mod3,testdata)$net.result)
     
@@ -253,7 +253,7 @@ em.nn <-function(Time,Time1,Status,Status1,X,X1,Z,Z1,offsetvar,uncureprob,uncure
     
     dataa4=data.frame(uncureprob4,Z[,-1])
     mod4=neuralnet((uncureprob4==1)~z1+z2,data = dataa4, 
-                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic',learningrate = 0.0001)
     proba4=data.frame(probs4=neuralnet::compute(mod4,data)$net.result)
     cproba4=data.frame(prob4=neuralnet::compute(mod4,testdata)$net.result)
     
@@ -265,7 +265,7 @@ em.nn <-function(Time,Time1,Status,Status1,X,X1,Z,Z1,offsetvar,uncureprob,uncure
     
     dataa5=data.frame(uncureprob5,Z[,-1])
     mod5=neuralnet((uncureprob5==1)~z1+z2,data = dataa5, 
-                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic')
+                   hidden=c(6,12),threshold = 0.05,linear.output=FALSE, act.fct = 'logistic',learningrate = 0.0001)
     proba5=data.frame(probs5=neuralnet::compute(mod5,data)$net.result)
     cproba5=data.frame(prob5=neuralnet::compute(mod5,testdata)$net.result)
     
