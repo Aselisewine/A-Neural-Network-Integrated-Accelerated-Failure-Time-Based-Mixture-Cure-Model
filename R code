@@ -118,7 +118,7 @@ data.Ber.Aft.RC = function(n,beta0,beta1,beta2,beta3,beta4,beta5,beta6,beta7,bet
 
 
 
-# A3. R code for computing the errors based on initial betas
+# A3. R code for computing the measure of error, given the current values of the beta coefficients
 
 library(survival)
 
@@ -162,7 +162,7 @@ smsurv <-function(Time,Status,X,beta,w,model){
 
 
 
-# A4. R code for Neural network-based EM algorithm
+# A5. R code for Neural network-based EM algorithm
 library(ANN2)
 
 em.nn <-function(Time,Time1,Status,Status1,X,X1,Z,Z1,offsetvar,uncureprob,uncurepred,beta,emmax,eps,data,testdata) # considering proportional hazards structure
