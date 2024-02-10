@@ -163,7 +163,7 @@ smsurv <-function(Time,Status,X,beta,w,model){
 
 
 # A5. R code for Neural network-based EM algorithm
-library(ANN2)
+library(neuralnet)
 
 em.nn <-function(Time,Time1,Status,Status1,X,X1,Z,Z1,offsetvar,uncureprob,uncurepred,beta,emmax,eps,data,testdata) # considering proportional hazards structure
 {     
